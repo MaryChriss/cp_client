@@ -1,0 +1,6 @@
+@LookupProxy.Api_HostAddress = http://localhost:5193
+
+GET {{LookupProxy.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

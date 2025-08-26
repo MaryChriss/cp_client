@@ -1,0 +1,80 @@
+﻿@model Client.Web.Controllers.CustomerCreateModel
+@{
+    ViewData["Title"] = "Novo Cliente";
+}
+<h1>Novo Cliente</h1>
+
+<form method="post">
+    <fieldset>
+        <legend>Dados</legend>
+        <div>
+            <label>Nome</label><br />
+            <input asp-for="Name" style="width: 300px;" />
+        </div>
+        <div>
+            <label>Email</label><br />
+            <input asp-for="Email" style="width: 300px;" />
+        </div>
+        <div>
+            <label>CNPJ</label><br />
+            <input asp-for="Cnpj" style="width: 300px;" placeholder="Somente números" />
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Endereço</legend>
+        <div>
+            <label>CEP</label><br />
+            <input asp-for="Cep" id="cep" style="width: 150px;" placeholder="00000000" />
+            <button type="button" id="btnCep">Buscar CEP</button>
+        </div>
+        <div>
+            <label>Rua</label><br />
+            <input asp-for="Street" id="street" style="width: 400px;" />
+        </div>
+        <div>
+            <label>Bairro</label><br />
+            <input asp-for="Neighborhood" id="neighborhood" style="width: 300px;" />
+        </div>
+        <div>
+            <label>Cidade</label><br />
+            <input asp-for="City" id="city" style="width: 250px;" />
+        </div>
+        <div>
+            <label>UF</label><br />
+            <input asp-for="State" id="state" style="width: 60px;" maxlength="2" />
+        </div>
+        <div>
+            <label>Número</label><br />
+            <input asp-for="Number" style="width: 120px;" />
+        </div>
+        <div>
+            <label>Complemento</label><br />
+            <input asp-for="Complement" style="width: 300px;" />
+        </div>
+    </fieldset>
+
+    <button type="submit">Salvar</button>
+</form>
+
+@section Scripts {
+    <script>
+        document.getElementById('btnCep').addEventListener('click', async () => {
+          const cep = document.getElementById('cep').value;
+          if (!cep) { alert('Informe o CEP'); return; }
+
+          try {
+            const resp = await fetch(`/Customers/Cep?cep=${encodeURIComponent(cep)}`);
+            if (!resp.ok) { alert('Erro ao consultar CEP'); return; }
+            const data = await resp.json();
+
+            document.getElementById('street').value = data.street || '';
+            document.getElementById('neighborhood').value = data.neighborhood || '';
+            document.getElementById('city').value = data.city || '';
+            document.getElementById('state').value = data.state || '';
+          } catch {
+            alert('Falha na consulta de CEP');
+          }
+        });
+    </script>
+}

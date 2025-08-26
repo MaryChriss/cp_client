@@ -1,0 +1,30 @@
+﻿@model List<Client.Web.Controllers.CustomerViewModel>
+@{
+    ViewData["Title"] = "Clientes";
+}
+<h1>Clientes</h1>
+<p><a asp-action="Create">+ Novo Cliente</a></p>
+
+<table style="width:100%; border-collapse: collapse;" border="1" cellpadding="6">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>CNPJ</th>
+            <th>Cidade</th>
+            <th>UF</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>@c.Email</td>
+                <td>@c.Cnpj</td>
+                <td>@c.City</td>
+                <td>@c.State</td>
+            </tr>
+        }
+    </tbody>
+</table>
