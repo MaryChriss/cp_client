@@ -1,6 +1,3 @@
-Claro! Aqui está o conteúdo formatado em **Markdown** pronto para você copiar e colar no seu `README.md`:
-
-```markdown
 # ClienteHub 
 
 Solução em .NET com arquitetura de **microsserviços** para gestão de clientes, integrando:
@@ -305,7 +302,6 @@ EOF
 * Em dev, prefira **User Secrets** ou variável de ambiente (`ORACLE_CS`).
 * `appsettings.json` aqui contém apenas exemplos.
 
-```
 
 Quer que eu monte também uma **versão enxuta**, só com os pontos essenciais (descrição, pré-requisitos, como rodar e endpoints), para você usar como alternativa rápida no README?
 ```
